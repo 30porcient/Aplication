@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Modelo.Entidades.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Modulo Clientes</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClienteId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar", "Edit", "Cliente", new { id = item.ClienteId }, new { @class = "btn btn-default" }) |
+                    @Html.ActionLink("Detalles", "Details", "Cliente", new { id = item.ClienteId }, new { @class = "btn btn-default" }) |
+                    @Html.ActionLink("Eliminar", "Delete", "Cliente", new { id = item.ClienteId }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        }
+    }
+</table>
+<p>
+    @Html.ActionLink("Crear Cliente Nuevo", "Create", "Cliente", new { @class = "btn btn-default" })
+</p>
